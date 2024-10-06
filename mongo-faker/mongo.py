@@ -1,5 +1,3 @@
-import os
-
 from pymongo import MongoClient
 from faker import Faker
 from random import choice, randint
