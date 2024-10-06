@@ -1,3 +1,4 @@
+import os
 
 from pymongo import MongoClient
 from faker import Faker
@@ -25,9 +26,13 @@ class PacienteModel(BaseModel):
 def generar_dni() -> str:
     return str(randint(10000000, 99999999))
 
+HOST = os.getenv("HOST")
+PORT = os.getenv("PORT")
+
+MONGO_URI = "mongodb://" + HOST + ":" + PORT + "/"
 
 try:
-    client = MongoClient('mongodb://98.82.247.140:27017/', serverSelectionTimeoutMS=5000)
+    client = MongoClient(MONGO_URI, serverSelectionTimeoutMS=5000)
     client.server_info()  # Intentar obtener información del servidor
     print("Conectado a MongoDB!")
 except Exception as e:
