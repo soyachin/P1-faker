@@ -1,3 +1,5 @@
+import sys
+
 from pymongo import MongoClient
 from faker import Faker
 from random import choice, randint
@@ -35,6 +37,7 @@ try:
     print("Conectado a MongoDB!")
 except Exception as e:
     print("Error al conectar a MongoDB:", e)
+    sys.exit(1)
 
 
 db = client.P1pacientes_test
