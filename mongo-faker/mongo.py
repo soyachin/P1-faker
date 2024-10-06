@@ -26,13 +26,13 @@ class PacienteModel(BaseModel):
 def generar_dni() -> str:
     return str(randint(10000000, 99999999))
 
-HOST = os.getenv("HOST")
-PORT = os.getenv("PORT")
+import os
 
-MONGO_URI = "mongodb://" + HOST + ":" + PORT + "/"
+host = os.getenv('HOST')  # Usa 'localhost' como valor por defecto
+port = int(os.getenv('PORT', 27017))    # Usa 27017 como valor por defecto
 
 try:
-    client = MongoClient(MONGO_URI, serverSelectionTimeoutMS=5000)
+    client = MongoClient(f'mongodb://{host}:{port}/')
     client.server_info()  # Intentar obtener información del servidor
     print("Conectado a MongoDB!")
 except Exception as e:
