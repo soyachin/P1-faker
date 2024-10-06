@@ -31,6 +31,8 @@ import os
 host = os.getenv('HOST')  # Usa 'localhost' como valor por defecto
 port = int(os.getenv('PORT', 27017))    # Usa 27017 como valor por defecto
 
+print("Conectandose al host", host, "en el puerto", port)
+
 try:
     client = MongoClient(f'mongodb://{host}:{port}/')
     client.server_info()  # Intentar obtener información del servidor
